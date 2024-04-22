@@ -1,3 +1,4 @@
+This tutorial explains the key featirs of OAuth 2.0 and OpenID connect:
 ----------------
 Proof Key for Code Exchange: (PKCE) helps protect the integrity of the Authorization Code,
 a server-to-server request to exchange the authorization code,
@@ -27,22 +28,37 @@ redirect_uri=http://spring.io/auth&
 code_challenge=KdjhFpcsmuulozj9aViEggHNcnVW-aq4O13Rfpn8yig&
 code_challenge_method=S256
 
-then after getting the authorization-code, ran the below to get the access-token, and id-token,
+then after getting the authorization-code, ran the below to get the access-token, and id-token:
 http://localhost:8080/oauth2/token?
 client_id=client&
 client_secret=secret&
 redirect_uri=http://spring.io/auth&
-grant_type=authorization_code&code=Xtgp1svR0d_18fkQtyadiTnGbUpLtghjK3iM2j-9H0mxF0d_PPzT_7qeB8mQ-OqB3C2mepLEpBMbd4md9LvFd5mg3taHfqCMAXkvqetNkQxeB9jz3Y_4JuCQ_BgtQHs8&code_verifier=vlc9d7rAV0ZJlRiCMFOoxBEZ7FRqxHn9LBQAZSu8tXX-wWl9yKsId6O-G67npqtwaj5OOmvVK71SEjYUUhV_pZ4J8syxPcq1MBwHCJob_Z8r5MLhThKDsc_UuhkdHfV5
+grant_type=authorization_code&code=Xtgp1svR0d_18fkQtyadiTnGbUpLtghjK3iM2j-9H0mxF0d_PPzT_7qeB8mQ-OqB3C2mepLEpBMbd4md9LvFd5mg3taHfqCMAXkvqetNkQxeB9jz3Y_4JuCQ_BgtQHs8&
+code_verifier=vlc9d7rAV0ZJlRiCMFOoxBEZ7FRqxHn9LBQAZSu8tXX-wWl9yKsId6O-G67npqtwaj5OOmvVK71SEjYUUhV_pZ4J8syxPcq1MBwHCJob_Z8r5MLhThKDsc_UuhkdHfV5
 ------------
 see example response with access token below, doe via postman,
 {
-    "access_token": "eyJraWQiOiIxN2YzNTk3Mi05ZDQ2LTQ4YjktYmJjZi1iMDI1NDJiMzU2MGYiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJraWV2YTI5MCIsImF1ZCI6ImNsaWVudCIsIm5iZiI6MTcxMzgwNzc0MCwic2NvcGUiOlsib3BlbmlkIl0sImlzcyI6Imh0dHA6XC9cL2xvY2FsaG9zdDo4MDgwIiwiZXhwIjoxNzEzODA4MDQwLCJpYXQiOjE3MTM4MDc3NDB9.Uq-HwkDfh1EZ8zTFpl9JQYtDRQWOnLoOoM-SiKJXnSaLfq3U_SCAvJ4pkH0ZsrfKEOU89mAOon4x6uqRtgOrWo55XDGvDC6CBDwZPgGOhH8_AhIQvrfvja70MfrKes0i4WxFR_ZhEfl_6RePJULAnDakJFmfQom7-fsmt7784FNBMt29KYop7PT8WEvPIs5bIB1P1S2CZd24PexPOP4-NcktAGOO-djwvfqWbs8VpFAmRsOB5NCsa_YoSQJU4oVLUW4qmh5PYjtvbeNYtxizBMVCpV9kUopmAPg0EnIMkyKkn10ILjsYRhVtHxc9mbihUFWhP1QOCP2IoI6jF_qEpA",
+    "access_token": "eyJraWQiOiIxN2YzNTk3Mi05ZDQ2LTQ4YjktYmJjZi1iMDI1NDJiMzU2MGYiLCJhbGciOiJSUzI1NiJ9.
+                     eyJzdWIiOiJraWV2YTI5MCIsImF1ZCI6ImNsaWVudCIsIm5iZiI6MTcxMzgwNzc0MCwic2NvcGUiOlsib
+                     3BlbmlkIl0sImlzcyI6Imh0dHA6XC9cL2xvY2FsaG9zdDo4MDgwIiwiZXhwIjoxNzEzODA4MDQwLCJpYX
+                     QiOjE3MTM4MDc3NDB9.Uq-HwkDfh1EZ8zTFpl9JQYtDRQWOnLoOoM-SiKJXnSaLfq3U_SCAvJ4pkH0Zsrf
+                     KEOU89mAOon4x6uqRtgOrWo55XDGvDC6CBDwZPgGOhH8_AhIQvrfvja70MfrKes0i4WxFR_ZhEfl_6RePJ
+                     ULAnDakJFmfQom7-fsmt7784FNBMt29KYop7PT8WEvPIs5bIB1P1S2CZd24PexPOP4-NcktAGOO-djwvfq
+                     Wbs8VpFAmRsOB5NCsa_YoSQJU4oVLUW4qmh5PYjtvbeNYtxizBMVCpV9kUopmAPg0EnIMkyKkn10ILjsYR
+                     hVtHxc9mbihUFWhP1QOCP2IoI6jF_qEpA",
     "scope": "openid",
-    "id_token": "eyJraWQiOiIxN2YzNTk3Mi05ZDQ2LTQ4YjktYmJjZi1iMDI1NDJiMzU2MGYiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJraWV2YTI5MCIsImF1ZCI6ImNsaWVudCIsImF6cCI6ImNsaWVudCIsImlzcyI6Imh0dHA6XC9cL2xvY2FsaG9zdDo4MDgwIiwiZXhwIjoxNzEzODA5NTQwLCJpYXQiOjE3MTM4MDc3NDB9.DQ6EblkjBv5g5F9pQ89CnprYBb7LWTSVMVDTBlZuUoKeIZ1wlBLNB66EXlTGaTruk3uqH45bFA9R66WS3RwGYEnhJNND3HpCF3pIajLL-5FHAi0vGjT63q0Vte1my3hResgiIoXgZieNhj8pOLl7ksCwOpj8GnoBSVPp0NleMEdGURStNZG8vF63KamkGEaRsXp4k2YKyiO3uBTk5Erj6P_Ga3p_WWA7RHEPPlwv_OcOEnTeaH3fjk2W3P0BKkNtuAzq59z2yFI37019VObju9-A0gH3uM0YPlkkuwgtTeYYbPMh3T_leWTdCGGlRsXBcj-GrX4ns36P__go4RGH7g",
+    "id_token": "eyJraWQiOiIxN2YzNTk3Mi05ZDQ2LTQ4YjktYmJjZi1iMDI1NDJiMzU2MGYiLCJhbGciOiJSUzI1NiJ9.eyJzdWI
+                 iOiJraWV2YTI5MCIsImF1ZCI6ImNsaWVudCIsImF6cCI6ImNsaWVudCIsImlzcyI6Imh0dHA6XC9cL2xvY2FsaG9
+                 zdDo4MDgwIiwiZXhwIjoxNzEzODA5NTQwLCJpYXQiOjE3MTM4MDc3NDB9.DQ6EblkjBv5g5F9pQ89CnprYBb7LWT
+                 SVMVDTBlZuUoKeIZ1wlBLNB66EXlTGaTruk3uqH45bFA9R66WS3RwGYEnhJNND3HpCF3pIajLL-5FHAi0vGjT63q
+                 0Vte1my3hResgiIoXgZieNhj8pOLl7ksCwOpj8GnoBSVPp0NleMEdGURStNZG8vF63KamkGEaRsXp4k2YKyiO3uB
+                 Tk5Erj6P_Ga3p_WWA7RHEPPlwv_OcOEnTeaH3fjk2W3P0BKkNtuAzq59z2yFI37019VObju9-A0gH3uM0YPlkkuw
+                 gtTeYYbPMh3T_leWTdCGGlRsXBcj-GrX4ns36P__go4RGH7g",
     "token_type": "Bearer",
     "expires_in": 299
 }
 ---------------
+steps to initialize and push code after creating the repository on github,
 git init
 git add README.md
 git commit -m "first commit"
